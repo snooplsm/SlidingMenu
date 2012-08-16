@@ -100,7 +100,7 @@ public class CustomViewAbove extends ViewGroup {
 		 * ID of the active pointer. This is used to retain consistency during
 		 * drags/flings if multiple pointers are used.
 		 */
-		private int mActivePointerId = INVALID_POINTER;
+		protected int mActivePointerId = INVALID_POINTER;
 		/**
 		 * Sentinel value for no current active pointer.
 		 * Used by {@link #mActivePointerId}.
@@ -110,9 +110,9 @@ public class CustomViewAbove extends ViewGroup {
 		/**
 		 * Determines speed during touch scrolling
 		 */
-		private VelocityTracker mVelocityTracker;
+		protected VelocityTracker mVelocityTracker;
 		private int mMinimumVelocity;
-		private int mMaximumVelocity;
+		protected int mMaximumVelocity;
 		private int mFlingDistance;
 
 		private boolean mFirstLayout = true;
@@ -1009,14 +1009,15 @@ public class CustomViewAbove extends ViewGroup {
 
 		private boolean thisTouchAllowed(MotionEvent ev) {
 			if (isMenuOpen()) {
-				switch (mTouchModeBehind) {
-				case SlidingMenu.TOUCHMODE_FULLSCREEN:
-					return true;
-				case SlidingMenu.TOUCHMODE_MARGIN:
-					return ev.getX() >= getBehindWidth() && ev.getX() <= getWidth();
-				default:
-					return false;
-				}
+				return true;
+//				switch (mTouchModeBehind) {
+//				case SlidingMenu.TOUCHMODE_FULLSCREEN:
+//					return true;
+//				case SlidingMenu.TOUCHMODE_MARGIN:
+//					return ev.getX() >= getBehindWidth() && ev.getX() <= getWidth();
+//				default:
+//					return false;
+//				}
 			} else {
 				switch (mTouchModeAbove) {
 				case SlidingMenu.TOUCHMODE_FULLSCREEN:
@@ -1263,7 +1264,7 @@ public class CustomViewAbove extends ViewGroup {
 					// Don't lose the rounded component
 					mLastMotionX += scrollX - (int) scrollX;
 					scrollTo((int) scrollX, getScrollY());
-					pageScrolled((int) scrollX);
+					//pageScrolled((int) scrollX);
 				}
 				break;
 			case MotionEvent.ACTION_UP:

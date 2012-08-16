@@ -112,6 +112,9 @@ public class SlidingMenu extends RelativeLayout {
 		mViewAbove.setContent(v);
 		mViewAbove.invalidate();
 		mViewAbove.dataSetChanged();
+		if(mViewBehind!=null) {
+			mViewBehind.setCustomViewAbove(mViewAbove);
+		}
 		showAbove();
 	}
 
@@ -123,6 +126,7 @@ public class SlidingMenu extends RelativeLayout {
 		mViewBehind.setContent(v);
 		mViewBehind.invalidate();
 		mViewBehind.dataSetChanged();
+		mViewBehind.setCustomViewAbove(mViewAbove);
 	}
 
 	public void setSlidingEnabled(boolean b) {
