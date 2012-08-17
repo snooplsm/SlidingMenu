@@ -1288,7 +1288,7 @@ public class CustomViewAbove extends ViewGroup {
 
 					mActivePointerId = INVALID_POINTER;
 					endDrag();
-				} else if (isMenuOpen()) {
+				} else if (isMenuOpen() && mTouchModeBehind==SlidingMenu.TOUCHMODE_MARGIN) {
 					// close the menu
 					setCurrentItem(1);
 				}
@@ -1315,7 +1315,7 @@ public class CustomViewAbove extends ViewGroup {
 			}
 			if (mActivePointerId == INVALID_POINTER)
 				mLastTouchAllowed = false;
-			return true;
+			return false;
 		}
 
 		private float mScrollScale;
